@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Fetch API Data
+        </title>
+    </head>
+    <BOdy>
+        <!doctype html>
+        <html>
+            <head>
+                <title>
+                    Fetch API Data
+                </title>
+            </head>
+            <BOdy>
+                <button onclick="request()">Request Data</button>
+                <div id="result"></div>
+            
+            </BOdy>
+            <script>
+function request() {
+      // Fetching the array
+      fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(function (response) {
+          return response.json();
+        })
+        // Displaying the json data into my div
+        .then((response) => {
+          var result = document.getElementById("result");
+          var htmlContent = "";
+          // Loop through the first 20 elements of the response array
+          for (var i = 0; i < 25 && i < response.length; i++) {
+            var element = response[i];
+            // Append the HTML for each element to the accumulated content
+            htmlContent +=
+              "Id: " +
+              element.id +
+              "  " +
+              "Title: " +
+              element.title +
+              "<br><br>";
+          }
+          result.innerHTML = htmlContent;
+          console.log(response);
+        });
+    }
+    </script> 
+
+
+</html>
